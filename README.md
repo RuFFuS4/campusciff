@@ -99,7 +99,7 @@ Para finalizar subiremos el **TAG** al repositorio online y haremos un último _
 * SEGUIR REPOSITORIOS Y AÑADIR ESTRELLAS
 	
 	Voy a seguir el repositorio de uno de mis compañeros y le añadiré una estrella. Para realizarlo con el resto sería de igual manera.
-	<div style="text-align: center"> <img src="Img/FollowFran.png"></div>
+	<div style="text-align: center"> <img src="Img/Star.png"></div>
 
 ---
 ##	<div style="text-align: center">9. TABLA</div>
