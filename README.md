@@ -120,9 +120,16 @@ Desde la pestaña _Settings_ y en la opción _Collaborators_ podemos hacer colab
 ##	<div style="text-align: center;">1. RAMA</div>
 Crearemos una rama
 
+<<<<<<< HEAD
 <code>git branch v2.0</code>
 
 Posicionaremos la carpeta de trabajo en esa rama
+=======
+* SEGUIR REPOSITORIOS Y AÑADIR ESTRELLAS
+	
+	Voy a seguir el repositorio de uno de mis compañeros y le añadiré una estrella. Para realizarlo con el resto sería de igual manera.
+	<div style="text-align: center"> <img src="Img/Star.png"></div>
+>>>>>>> 4adb8aadee863d4d5ce6f9cb18338a0fc2d5ea73
 
 <code>git checkout v2.0</code>
 
