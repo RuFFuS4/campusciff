@@ -87,13 +87,13 @@ Para finalizar subiremos el **TAG** al repositorio online y haremos un último _
 * **SEGUIR COMPAÑEROS**
 	<br>
 	<h3 style="text-align: center;">Fran</h2>
-	<div style="text-align: center;"> <img src="Img/FollowFran.png"></div>
+	<div style="text-align: center;"> <img src="Img/FollowFran.PNG"></div>
   	<h3 style="text-align: center;">Miriam</h2>
-  	<div style="text-align: center;"> <img src="Img/FollowMiriam.png"></div>
+  	<div style="text-align: center;"> <img src="Img/FollowMiriam.PNG"></div>
   	<h3 style="text-align: center;">David</h2>
-  	<div style="text-align: center;"> <img src="Img/FollowDavid.png"></div>
+  	<div style="text-align: center;"> <img src="Img/FollowDavid.PNG"></div>
   	<h3 style="text-align: center;">Miguel</h2>
-  	<div style="text-align: center;"> <img src="Img/FollowMiguel.png"></div>
+  	<div style="text-align: center;"> <img src="Img/FollowMiguel.PNG"></div>
 	<br><br>
 * **SEGUIR REPOSITORIOS Y AÑADIR ESTRELLAS**
 	
@@ -186,7 +186,7 @@ Como podemos ver ___Git___ nos permite ver cual es el cambio que causa el confli
 ###	<div style="text-align: center;">LISTADO RAMAS</div>
 Antes de arreglar el conflicto causado procederemos a mostrar las ramas que han sufrido un ___MERGE___ y las que no para así observar como el conflicto evita que las ramas sean fusionadas hasta ser resuelto.
 
-<div style="text-align: center;"> <img src="Img/ListadoRamas.png"></div><br>
+<div style="text-align: center;"> <img src="Img/ListadoRamas.PNG"></div><br>
 
 ###	<div style="text-align: center;">SOLUCION CONFLICTO</div>
 Para solucionar el conflicto elegiremos cual de las dos partes del mismo nos interesa conservar y haremos un ___COMMIT___ :
