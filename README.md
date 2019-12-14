@@ -153,160 +153,67 @@ Para posteriormente hacer un merge de la rama **v2.0** en el ___master___.
 
 <code>git merge v2.0 -m "merge v2.0 sin conflictos"</code>
 
+<div style="text-align: center;"> <img src="Img/Merge.png"></div><br>
+
 ###	<div style="text-align: center;">CON CONFLICTO</div>
 En esta ocasión realizaremos un _conflicto_ para poder ver lo que sucede cuando simultáneamente queremos modificar un mismo archivo desde dos ramas diferentes y fusionarlas.<br>
 Para ello, en primer lugar modificaremos el archivo ___1.txt___ del ___master___ :
-<pre><code>git checkout master
-echo "Hola" >> 1.txt
+<pre><code>echo "Hola" >> 1.txt
 git add .
 git commit -m "hola en 1.txt"
 </code></pre>
 Y después el mismo archivo ___1.txt.___ de la rama ___v2.0___: 
-<pre><code>git checkout v0.2
-echo "Adios" &gt;&gt; 1.txt
+<pre><code>git checkout v2.0
+echo "Adios" >> 1.txt
 git add .
-git commit -m "adios en 1.txt"
+git commit -m "Adios en 1.txt"
 </code></pre>
+
+<div style="text-align: center;"> <img src="Img/MergeConflicto.png"></div><br>
 
 Como vemos en la primera rama hemos escrito _"Hola"_ y en la segunda _"Adiós"_ lo que al intentar fusionarlas provocará un conflicto. <br>
 Para poder observarlo nos volveremos a ir a la rama ___master___ y haremos el ___MERGE___ :
 <pre><code>git checkout master
-git merge v0.2
-vim 1.txt
-git add .
+git merge v2.0
+vim 1.txt</code></pre>
+
+<div style="text-align: center;"> <img src="Img/MergeConflicto2.png"></div><br>
+
+Como podemos ver ___Git___ nos permite ver cual es el cambio que causa el conflicto:
+
+<div style="text-align: center;"> <img src="Img/MergeConflicto3.png"></div><br>
+
+###	<div style="text-align: center;">LISTADO RAMAS</div>
+Antes de arreglar el conflicto causado procederemos a mostrar las ramas que han sufrido un ___MERGE___ y las que no para así observar como el conflicto evita que las ramas sean fusionadas hasta ser resuelto.
+
+<div style="text-align: center;"> <img src="Img/ListadoRamas.png"></div><br>
+
+###	<div style="text-align: center;">SOLUCION CONFLICTO</div>
+Para solucionar el conflicto elegiremos cual de las dos partes del mismo nos interesa conservar y haremos un ___COMMIT___ :
+<pre><code>git add .
 git commit -m "arreglado merge en 1.txt"
 </code></pre>
 
-<h2><a id="user-content-listado-de-ramas" class="anchor" aria-hidden="true" href="#listado-de-ramas"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listado de ramas</h2>
-<ol>
-<li>Listar las ramas con merge y las ramas sin merge.</li>
-</ol>
-<pre><code>git branch --merged
-git branch --no-merged
-</code></pre>
-<h2><a id="user-content-arreglar-conflicto" class="anchor" aria-hidden="true" href="#arreglar-conflicto"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arreglar conflicto</h2>
-<ol>
-<li>Arreglar el conflicto anterior y hacer un commit.</li>
-</ol>
-<pre><code>vim 1.txt
-git add .
-git commit -m "arreglado merge en 1.txt"
-</code></pre>
-<h2><a id="user-content-borrar-rama" class="anchor" aria-hidden="true" href="#borrar-rama"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Borrar rama</h2>
-<ol>
-<li>Crear un tag <strong>v0.2</strong></li>
-</ol>
-<pre><code>git tag v0.2
-</code></pre>
-<ol>
-<li>Borrar la rama <strong>v0.2</strong></li>
-</ol>
-<pre><code>git branch -d v0.2
-</code></pre>
-<h2><a id="user-content-listado-de-cambios" class="anchor" aria-hidden="true" href="#listado-de-cambios"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listado de cambios</h2>
-<ol>
-<li>Listar los distintos commits con sus ramas y sus tags.</li>
-</ol>
+<div style="text-align: center;"> <img src="Img/ArreglandoConflicto.png"></div><br>
+---
+
+##	<div style="text-align: center;">3. BORRAR</div>
+Por último vamos a borrar la rama _v2.0_ para lo cual antes crearemos un ___TAG___ :
+
+<code>git tag v2.0</code>
+
+Ahora la borramos:
+
+<code>git tag v2.0</code>
+
+<div style="text-align: center;"> <img src="Img/BorrarRama.png"></div><br>
+
+##	<div style="text-align: center;">4. LISTAR CAMBIOS</div>
+Por último mostraremos los distintos ___COMMITS___ y ___TAGS___ realizados:
+
 <pre><code>git config --global alias.list 'log --oneline --decorate --graph --all'
-git list
-</code></pre>
-<h2><a id="user-content-cuenta-de-github" class="anchor" aria-hidden="true" href="#cuenta-de-github"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cuenta de GitHub</h2>
-<ol>
-<li>
-<p>Poner una foto en vuestro perfil de GitHub.</p>
-</li>
-<li>
-<p>Poner el doble factor de autentificación en vuestra cuenta de GitHub.</p>
-</li>
-<li>
-<p>Añadir (si no lo habéis hecho ya) la clave pública que se corresponde a tu ordenador.</p>
-</li>
-</ol>
-<h2><a id="user-content-uso-social-de-github" class="anchor" aria-hidden="true" href="#uso-social-de-github"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Uso social de GitHub</h2>
-<ol>
-<li>
-<p>Preguntar los nombres de usuario de GitHub de tus compañeros de clase, búscalos, y sigueles.</p>
-</li>
-<li>
-<p>Seguir los repositorios <strong>masteruah</strong> del resto de tus compañeros.</p>
-</li>
-<li>
-<p>Añadir una estrella a los repositorios <strong>masteruah</strong> del resto de tus compañeros.</p>
-</li>
-</ol>
-<h2><a id="user-content-crear-una-tabla" class="anchor" aria-hidden="true" href="#crear-una-tabla"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crear una tabla</h2>
-<ol>
-<li>Crear una tabla de este estilo en el fichero <strong>README.md</strong> con la información
-de varios de tus compañeros de clase:</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>NOMBRE</th>
-<th>GITHUB</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nombre del compañero 1</td>
-<td><a href="http://github.com/asanzdiego">enlace a github 1</a></td>
-</tr>
-<tr>
-<td>Nombre del compañero 2</td>
-<td><a href="http://github.com/asanzdiego">enlace a github 1</a></td>
-</tr>
-<tr>
-<td>Nombre del compañero 3</td>
-<td><a href="http://github.com/asanzdiego">enlace a github 3</a></td>
-</tr>
-</tbody>
-</table>
-<h2><a id="user-content-colaboradores" class="anchor" aria-hidden="true" href="#colaboradores"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Colaboradores</h2>
-<ol>
-<li>Poner a <a href="http://github.com/asanzdiego">github.com/asanzdiego</a> como colaborador
-del repositorio <strong>masteruah</strong></li>
-</ol>
-<h2><a id="user-content-crear-una-organización" class="anchor" aria-hidden="true" href="#crear-una-organización"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crear una organización</h2>
-<ol>
-<li>Crear una organización llamada <strong>masteruah-tunombredeusuariodegithub</strong></li>
-</ol>
-<h2><a id="user-content-crear-equipos" class="anchor" aria-hidden="true" href="#crear-equipos"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crear equipos</h2>
-<ol>
-<li>
-<p>Crear 2 equipos en la organización <strong>masteruah-tunombredeusuariodegithub</strong>,
-uno llamado <strong>administradores</strong> con más permisos y otro <strong>colaboradores</strong> con menos permisos.</p>
-</li>
-<li>
-<p>Meter a <a href="http://github.com/asanzdiego">github.com/asanzdiego</a> y a 2 de vuestros
-compañeros de clase en el equipo <strong>administradores</strong>.</p>
-</li>
-<li>
-<p>Meter a <a href="http://github.com/asanzdiego">github.com/asanzdiego</a> y a otros 2 de vuestros
-compañeros de clase en el equipo <strong>colaboradores</strong>.</p>
-</li>
-</ol>
-<h2><a id="user-content-crear-un-indexhtml" class="anchor" aria-hidden="true" href="#crear-un-indexhtml"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crear un index.html</h2>
-<ol>
-<li>Crear un index.html que se pueda ver como página web en la organización.</li>
-</ol>
-<h2><a id="user-content-crear-pull-requests" class="anchor" aria-hidden="true" href="#crear-pull-requests"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crear Pull-requests</h2>
-<ol>
-<li>
-<p>Hacer 2 forks de 2 repositorios <strong>masteruah-tunombredeusuariodegithub.github.io</strong>
-de 2 organizaciones de las que no seais ni administradiores ni colaboradores.</p>
-</li>
-<li>
-<p>Crearos una rama en cada fork.</p>
-</li>
-<li>
-<p>En cada rama modificar el fichero <strong>index.html</strong> añadiendo vuestro nombre.</p>
-</li>
-<li>
-<p>Con cada rama hacer un pull-request.</p>
-</li>
-</ol>
-<h2><a id="user-content-gestionar-pull-requests" class="anchor" aria-hidden="true" href="#gestionar-pull-requests"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Gestionar Pull-requests</h2>
-<ol>
-<li>Aceptar los pull-request que lleguen a los repositorios de tu organización.</li>
-</ol>
-</article>
+git list</code></pre>
+
+<div style="text-align: center;"> <img src="Img/Listar.png"></div><br>
+
+---
